@@ -27,6 +27,8 @@ public class Main implements Runnable, ActionListener{
 
     // initialize the main JPanel
     mainPanel = new JPanel();
+    // change background color of mainPanel 
+    mainPanel.setBackground(Color.BLACK);
     // turn on manual layouts 
     mainPanel.setLayout(null);
     // add the main panel to the JFrame 
@@ -47,13 +49,24 @@ public class Main implements Runnable, ActionListener{
     storyText = new JTextArea("");
 
     // set the size and location of the JTextArea 
-    storyText.setBounds(30, 60, 300, 250);
+    storyText.setBounds(30, 60, 740, 240);
 
     // disable the text area so the user can't type inside it 
     storyText.setEnabled(false);
 
+    // change the text color in storyText
+    Font font = new Font ("Times New Roman", Font.BOLD, 24);
+    storyText.setFont(font);
+    storyText.setForeground(Color.red);
+
     // put text inside the text area 
-    storyText.setText("");
+    storyText.setText("It is a time of perile in the kingdom of ");
+
+    // change font size 
+    storyText.setFont (storyText.getFont ().deriveFont(24.0f));
+
+    // change the storyText background 
+    storyText.setBackground(Color.BLACK);
 
     // add the text area to the mainPanel 
     mainPanel.add(storyText);
@@ -70,6 +83,7 @@ public class Main implements Runnable, ActionListener{
       button.setActionCommand("" + i);
       // put the button in the array 
       choiceButtons[i] = button;
+    }
 
     // set the size and location of the buttons 
     choiceButtons[1].setBounds(30, 320, 360, 100);
@@ -83,6 +97,20 @@ public class Main implements Runnable, ActionListener{
     choiceButtons[3].addActionListener(this);
     choiceButtons[4].addActionListener(this);
 
+    // insert set text for each button 
+    choiceButtons[1].setText("Warrior");
+    choiceButtons[2].setText("Wizard");
+    choiceButtons[3].setText("Spy");
+
+    // change font size of the buttons 
+    choiceButtons[1].setFont (choiceButtons[1].getFont ().deriveFont(20.0f));
+    choiceButtons[2].setFont (choiceButtons[2].getFont ().deriveFont(20.0f));
+    choiceButtons[3].setFont (choiceButtons[3].getFont ().deriveFont(20.0f));
+    choiceButtons[4].setFont (choiceButtons[4].getFont ().deriveFont(20.0f));
+
+    // make the JButton not visible 
+    choiceButtons[4].setVisible(false);
+
     // add the choiceButtons to the mainPanel 
     mainPanel.add(choiceButtons[1]);
     mainPanel.add(choiceButtons[2]);
@@ -91,7 +119,7 @@ public class Main implements Runnable, ActionListener{
 
     }
 
-  }
+  
 
   // method called when a button is pressed
   public void actionPerformed(ActionEvent e){
