@@ -81,10 +81,10 @@ public class Main implements Runnable, ActionListener{
 
     
     // create an array for the choice buttons 
-    choiceButtons = new JButton[4];
+    choiceButtons = new JButton[5];
 
     // use a for loop to go through and create each button and set the getActionCommand
-    for(int i = 0; i < choiceButtons.length; i++){
+    for(int i = 1; i < choiceButtons.length; i++){
       // initialize the buttons 
       JButton button = new JButton ("" + i);
       // put the button in the array 
@@ -92,40 +92,40 @@ public class Main implements Runnable, ActionListener{
     }
 
     // set the size and location of the buttons 
-    choiceButtons[0].setBounds(30, 320, 360, 100);
-    choiceButtons[1].setBounds(410, 320, 360, 100);
-    choiceButtons[2].setBounds(30, 440, 360, 100);
-    choiceButtons[3].setBounds(410, 440, 360, 100);
+    choiceButtons[1].setBounds(30, 320, 360, 100);
+    choiceButtons[2].setBounds(410, 320, 360, 100);
+    choiceButtons[3].setBounds(30, 440, 360, 100);
+    choiceButtons[4].setBounds(410, 440, 360, 100);
 
     // add action listener to the buttons 
-    choiceButtons[0].addActionListener(this);
     choiceButtons[1].addActionListener(this);
     choiceButtons[2].addActionListener(this);
     choiceButtons[3].addActionListener(this);
+    choiceButtons[4].addActionListener(this);
 
     // set setActionCommand to the buttons 
-    choiceButtons[0].setActionCommand("choice1");
-    choiceButtons[1].setActionCommand("choice2");
-    choiceButtons[2].setActionCommand("choice3");
-    choiceButtons[3].setActionCommand("choice4");
+    choiceButtons[1].setActionCommand("choice1");
+    choiceButtons[2].setActionCommand("choice2");
+    choiceButtons[3].setActionCommand("choice3");
+    choiceButtons[4].setActionCommand("choice4");
 
     // change font size of the buttons 
-    choiceButtons[0].setFont (choiceButtons[0].getFont ().deriveFont(20.0f));
     choiceButtons[1].setFont (choiceButtons[1].getFont ().deriveFont(20.0f));
     choiceButtons[2].setFont (choiceButtons[2].getFont ().deriveFont(20.0f));
     choiceButtons[3].setFont (choiceButtons[3].getFont ().deriveFont(20.0f));
+    choiceButtons[4].setFont (choiceButtons[4].getFont ().deriveFont(20.0f));
 
     // make the JButton not visible 
-    choiceButtons[0].setVisible(false);
     choiceButtons[1].setVisible(false);
     choiceButtons[2].setVisible(false);
     choiceButtons[3].setVisible(false);
+    choiceButtons[4].setVisible(false);
 
     // add the choiceButtons to the gameScreen 
-    gameScreen.add(choiceButtons[0]);
     gameScreen.add(choiceButtons[1]);
     gameScreen.add(choiceButtons[2]);
     gameScreen.add(choiceButtons[3]);
+    gameScreen.add(choiceButtons[4]);
 
     // make the role path buttons 
     streetThugPath = new JButton("Street Thug");
@@ -194,21 +194,21 @@ public class Main implements Runnable, ActionListener{
       corpoAgentPath.setVisible(false);
       marker = "street thug";
       storyText.setText("You are a Street Thug, they call you Ripper.\nWho are they, you might ask? The other thugs you see roaming\nthe streets. You want to become a legend, what faster way then to\ngain immortality and become a force to be reckoned with!");
-      choiceButtons[0].setVisible(true);
-      choiceButtons[1].setVisible(false);
+      choiceButtons[1].setVisible(true);
       choiceButtons[2].setVisible(false);
       choiceButtons[3].setVisible(false);
+      choiceButtons[4].setVisible(false);
 
-      choiceButtons[0].setText("Continue");
+      choiceButtons[1].setText("Continue");
     }
 
     public void continueGame(){
       marker = "continue";
       storyText.setText("test");
-      choiceButtons[0].setText("1");
-      choiceButtons[1].setText("2");
-      choiceButtons[2].setText("3");
-      choiceButtons[3].setText("4");
+      choiceButtons[1].setText("1");
+      choiceButtons[2].setText("2");
+      choiceButtons[3].setText("3");
+      choiceButtons[4].setText("4");
     }
 
     public void test(){
@@ -229,31 +229,28 @@ public class Main implements Runnable, ActionListener{
       screens.show(mainPanel, "gameScreen");
     }
 
+    
     if (command.equals("street")){
-    streetThug(); 
+    streetThug();
     switch (marker){
     case "street thug":
         switch(command){
-        case "choice1": 
-        continueGame(); 
-        break;
-        case "choice2":  
-        break;
-        case "choice3":  
-        break;
-        case "choice4": 
-        break;
-      }
-      case "continue":
-          switch(command){
-          case "choice1": 
-          test(); 
-          break;
+        case "choice1": continueGame(); break;
+        case "choice2": break;
+        case "choice3": break;
+        case "choice4": break;
         }
         break;
-    }
+    case "continue":
+        switch(command){
+        case "choice1": 
+        test(); 
+        break;
+        }
+        break;
+   }
   }
-}
+  }
 
 
   // Main method to start our program
