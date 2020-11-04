@@ -16,8 +16,6 @@ public class Main implements Runnable, ActionListener{
   JTextArea storyText;
 
   JButton choiceButtons[];
-  JButton streetThugPath;
-  JButton corpoAgentPath;
   JButton startButton;
 
   CardLayout screens;
@@ -46,7 +44,7 @@ public class Main implements Runnable, ActionListener{
 
 
     // initialize the label 
-    roleLabel = new JLabel("");
+    roleLabel = new JLabel("A Street Thug's Story");
     
     // set the size and location of the label 
     roleLabel.setBounds(300, 10, 200, 20);
@@ -71,7 +69,7 @@ public class Main implements Runnable, ActionListener{
     
 
     // put text inside the text area 
-    storyText.setText("The year 2077 is a time where crime runs rampant through\nValor City, hence the name, you will need to be courageous in\nthe face of danger in this crime filled metropolis. Street thugs\nhave small dreams of becoming a legend in Valor City, taking\nthe ugly way or not. Coporate Agents are above the regular\ncitizens, but they're working for a brainwashed company that\ndoesn't care about others.\n                                      Who will you be?");
+    storyText.setText("");
 
     // change the storyText background 
     storyText.setBackground(Color.BLACK);
@@ -116,7 +114,7 @@ public class Main implements Runnable, ActionListener{
     choiceButtons[4].setFont (choiceButtons[4].getFont ().deriveFont(20.0f));
 
     // make the JButton not visible 
-    choiceButtons[1].setVisible(false);
+    choiceButtons[1].setVisible(true);
     choiceButtons[2].setVisible(false);
     choiceButtons[3].setVisible(false);
     choiceButtons[4].setVisible(false);
@@ -126,26 +124,6 @@ public class Main implements Runnable, ActionListener{
     gameScreen.add(choiceButtons[2]);
     gameScreen.add(choiceButtons[3]);
     gameScreen.add(choiceButtons[4]);
-
-    // make the role path buttons 
-    streetThugPath = new JButton("Street Thug");
-    corpoAgentPath = new JButton("Corporate Agent");
-
-    streetThugPath.setBounds(30, 320, 360, 100);
-    corpoAgentPath.setBounds(410, 320, 360, 100);
-
-    streetThugPath.setFont (streetThugPath.getFont ().deriveFont(20.0f));
-    corpoAgentPath.setFont (corpoAgentPath.getFont ().deriveFont(20.0f));
-
-    streetThugPath.addActionListener(this);
-    corpoAgentPath.addActionListener(this);
-
-    streetThugPath.setActionCommand("street");
-    corpoAgentPath.setActionCommand("corpo");
-
-    gameScreen.add(streetThugPath);
-    gameScreen.add(corpoAgentPath);
-
     
     // set up the title screen
     titleScreen = new JPanel();
@@ -190,21 +168,32 @@ public class Main implements Runnable, ActionListener{
   }
     // create methods for different choices 
     public void streetThug(){
-      streetThugPath.setVisible(false);
-      corpoAgentPath.setVisible(false);
+      // declare what the marker will be so it can be called in a switch
       marker = "street thug";
-      storyText.setText("You are a Street Thug, they call you Ripper.\nWho are they, you might ask? The other thugs you see roaming\nthe streets. You want to become a legend, what faster way then to\ngain immortality and become a force to be reckoned with!");
+      // set what the storyText will say
+      storyText.setText("The year 2077 is a time where crime runs rampant through\nValor City, hence the name, you will need to be courageous in\nthe face of danger in this crime filled metropolis. Street thugs\nhave small dreams of becoming a legend in Valor City, taking\nthe ugly way or not. You are a Street Thug, they call you Ripper.\nYou want to become a legend, what faster way then to\ngain immortality and become a force to be reckoned with!");
+
+      // set what the buttons will display
+      choiceButtons[1].setText("Continue");
+      
+      // set which buttons are visible and which ones are not 
       choiceButtons[1].setVisible(true);
       choiceButtons[2].setVisible(false);
       choiceButtons[3].setVisible(false);
       choiceButtons[4].setVisible(false);
 
-      choiceButtons[1].setText("Continue");
+      
     }
 
     public void continueGame(){
       marker = "continue";
-      storyText.setText("test");
+      
+      choiceButtons[2].setVisible(true);
+      choiceButtons[3].setVisible(true);
+      choiceButtons[4].setVisible(true);
+      
+      storyText.setText("The phone is ringing\nYou pick it up, and to your surprise, no caller ID\nHesitant, you answer\n\"You're Ripper, right?\" Says the man on the other side\n");
+
       choiceButtons[1].setText("1");
       choiceButtons[2].setText("2");
       choiceButtons[3].setText("3");
@@ -213,8 +202,21 @@ public class Main implements Runnable, ActionListener{
 
     public void test(){
       marker = "test";
+      
       storyText.setText("hello");
       choiceButtons[1].setText("hey");
+
+    }
+
+    public void test2(){
+      marker = "test2";
+      
+      storyText.setText(" this is a test");
+
+      choiceButtons[1].setText("test2");
+      choiceButtons[2].setText("test3");
+      choiceButtons[3].setText("test27");
+      choiceButtons[4].setText("test5");
     }
     
     
@@ -227,30 +229,32 @@ public class Main implements Runnable, ActionListener{
     if (command.equals("begin")){
       // switch the screen to gameScreen
       screens.show(mainPanel, "gameScreen");
+      streetThug();
     }
-
     
-    if (command.equals("street")){
-    streetThug();
+    
     switch (marker){
     case "street thug":
         switch(command){
         case "choice1": continueGame(); break;
-        case "choice2": break;
-        case "choice3": break;
-        case "choice4": break;
         }
         break;
     case "continue":
-        switch(command){
-        case "choice1": 
-        test(); 
+        switch (command){
+        case "choice1": test(); break;
+        case "choice2": test(); break;
+        case "choice3": test(); break;
+        case "choice4": test(); break;
+        }
         break;
+    case "test":
+        switch (command){
+          case "choice1": test2(); break;  
         }
         break;
    }
   }
-  }
+  
 
 
   // Main method to start our program

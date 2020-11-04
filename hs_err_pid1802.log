@@ -1,0 +1,98 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f3deaece401, pid=1802, tid=1878
+#
+# JRE version: OpenJDK Runtime Environment (11.0.8+10) (build 11.0.8+10-post-Ubuntu-0ubuntu118.04.1)
+# Java VM: OpenJDK 64-Bit Server VM (11.0.8+10-post-Ubuntu-0ubuntu118.04.1, mixed mode, sharing, tiered, compressed oops, serial gc, linux-amd64)
+# Problematic frame:
+# C  [libjimage.so+0x2401]
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P %E" (or dumping to /home/runner/a9-final-project-pajid9763/core.1802)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugs.launchpad.net/ubuntu/+source/openjdk-lts
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: Main
+
+Host: Intel(R) Xeon(R) CPU @ 2.30GHz, 4 cores, 512M, Ubuntu 18.04.5 LTS
+Time: Wed Nov  4 16:51:57 2020 UTC elapsed time: 133 seconds (0d 0h 2m 13s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f3d78001000):  JavaThread "XToolkt-Shutdown-Thread" [_thread_in_vm, id=1878, stack(0x00007f3d9b4eb000,0x00007f3d9b5ec000)]
+
+Stack: [0x00007f3d9b4eb000,0x00007f3d9b5ec000],  sp=0x00007f3d9b5e9060,  free space=1016k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libjimage.so+0x2401]
+C  [libjimage.so+0x30ea]
+C  [libjimage.so+0x35c6]  JIMAGE_FindResource+0xd6
+V  [libjvm.so+0x59097e]
+V  [libjvm.so+0x5936e0]
+V  [libjvm.so+0xd50b85]
+V  [libjvm.so+0xd4e51a]
+V  [libjvm.so+0xd51112]
+V  [libjvm.so+0x647127]
+V  [libjvm.so+0xa3c57a]
+V  [libjvm.so+0x844136]
+V  [libjvm.so+0x84502d]
+j  sun.awt.X11.XToolkit.lambda$init$0()V+0 java.desktop@11.0.8
+j  sun.awt.X11.XToolkit$$Lambda$9.run()V+4 java.desktop@11.0.8
+j  java.lang.Thread.run()V+11 java.base@11.0.8
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x84eb09]
+V  [libjvm.so+0x84cc4d]
+V  [libjvm.so+0x8f6c9c]
+V  [libjvm.so+0xd8996f]
+V  [libjvm.so+0xd860bf]
+V  [libjvm.so+0xbd632e]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  sun.awt.X11.XToolkit.lambda$init$0()V+0 java.desktop@11.0.8
+j  sun.awt.X11.XToolkit$$Lambda$9.run()V+4 java.desktop@11.0.8
+j  java.lang.Thread.run()V+11 java.base@11.0.8
+v  ~StubRoutines::call_stub
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x00007f3ddb904ca8
+
+Register to memory mapping:
+
+RAX=0x0000000000000b23 is an unknown value
+RBX=0x00007f3d9b5e9111 is pointing into the stack for thread: 0x00007f3d78001000
+RCX=0x00007f3ddb90201c is an unknown value
+RDX=0x0000000000000b23 is an unknown value
+RSP=0x00007f3d9b5e9060 is pointing into the stack for thread: 0x00007f3d78001000
+RBP=0x00007f3d9b5e9080 is pointing into the stack for thread: 0x00007f3d78001000
+RSI=0x00007f3d9b5e9110 is pointing into the stack for thread: 0x00007f3d78001000
+RDI=0x00007f3deb0d1030: <offset 0x0000000000205030> in /usr/lib/jvm/java-11-openjdk-amd64/lib/libjimage.so at 0x00007f3deaecc000
+R8 =0x0 is NULL
+R9 =0x00000000ca0d71f0 is an unknown value
+R10=0x00007f3d9b5e9134 is pointing into the stack for thread: 0x00007f3d78001000
+R11=0x00007f3decf0707d: <offset 0x0000000000eb307d> in /usr/lib/jvm/java-11-openjdk-amd64/lib/server/libjvm.so at 0x00007f3dec054000
+R12=0x00007f3d9b5e9110 is pointing into the stack for thread: 0x00007f3d78001000
+R13=0x00000000000083bc is an unknown value
+R14=0x00007f3d9b5ea1a8 is pointing into the stack for thread: 0x00007f3d78001000
+R15=0x00007f3db00070e0 points into unknown readable memory: 73 75 6e 2f 61 77 74 2f
+
+
+Registers:
+RAX=0x0000000000000b23, RBX=0x00007f3d9b5e9111, RCX=0x00007f3ddb90201c, RDX=0x0000000000000b23
+RSP=0x00007f3d9b5e9060, RBP=0x00007f3d9b5e9080, RSI=0x00007f3d9b5e9110, RDI=0x00007f3deb0d1030
+R8 =0x0000000000000000, R9 =0x00000000ca0d71f0, R10=0x00007f3d9b5e9134, R11=0x00007f3decf0707d
+R12=0x00007f3d9b5e9110, R13=0x00000000000083bc, R14=0x00007f3d9b5ea1a8, R15=0x00007f3db00070e0
+RIP=0x00007f3deaece401, EFLAGS=0x0000000000010246, CSGSFS=0x002b000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007f3d9b5e9060)
+0x00007f3d9b5e9060:   0000000000000000 00007f3de4009600
+0x00007f3d9b5e9070:   0000000000000000 00007f3d9b5e9110
+0x00007f3d9b5e9080:   00007f3d9b5e90f0 00007f3deaecf0ea
+0x00007f3d9b5e9090:   0000000000000000 0000000000000000 
+
+Instructions: (pc=0x00007f3deaece401)
+0x00007f3deaece301:   c5 4c 01 e3 48 89 ce e8 d3 f3 ff ff e9 69 fd ff
+0x00007f3deaece311:   ff 89 d1 0f b7 74 08 fe 66 41 89 74 0e fe e9 7a
+0x00007f3deaece321:   fe ff ff 0f 1f 40 00 8b 08 49 8d 1c 16 41 89
