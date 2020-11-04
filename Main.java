@@ -195,9 +195,9 @@ public class Main implements Runnable, ActionListener{
       marker = "street thug";
       storyText.setText("You are a Street Thug, they call you Ripper.\nWho are they, you might ask? The other thugs you see roaming\nthe streets. You want to become a legend, what faster way then to\ngain immortality and become a force to be reckoned with!");
       choiceButtons[0].setVisible(true);
-      choiceButtons[1].setVisible(true);
-      choiceButtons[2].setVisible(true);
-      choiceButtons[3].setVisible(true);
+      choiceButtons[1].setVisible(false);
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
 
       choiceButtons[0].setText("Continue");
     }
@@ -231,33 +231,30 @@ public class Main implements Runnable, ActionListener{
 
     if (command.equals("street")){
     streetThug(); 
-      switch(command){
+    switch (marker){
+    case "street thug":
+        switch(command){
         case "choice1": 
         continueGame(); 
         break;
-        case "choice2": 
-        continueGame(); 
+        case "choice2":  
         break;
-        case "choice3": 
-        continueGame(); 
+        case "choice3":  
         break;
         case "choice4": 
-        continueGame(); 
         break;
       }
-      switch(marker){
       case "continue":
-        switch(command){
+          switch(command){
           case "choice1": 
           test(); 
           break;
         }
-      break;
+        break;
     }
   }
 }
-  
-  
+
 
   // Main method to start our program
   public static void main(String[] args){
