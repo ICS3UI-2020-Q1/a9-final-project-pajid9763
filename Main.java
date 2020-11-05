@@ -251,7 +251,7 @@ public class Main implements Runnable, ActionListener{
     public void streetRace(){
       marker = "street race";
 
-      storyText.setText(" \"You have a better a idea, let's hear it then!\"Demands Flash\n\"Hear me out, there's a street race happening not too far from here on\nHollow Street, some of the biggest betters are rumoured to join in on the fun. Whaddya say I enter, win the damn thing and you'll have more than enough money to buy yourself the best looking katanas on the market?\" You say confidentally\n\"Well if you're so confident, go for it, but if you don't win. Boy you won't wanna know the consequences!\"Flash said with an evil look in his eyes.\nAnd with that you were off to Hollow Street.");
+      storyText.setText(" \"You have a better a idea, let's hear it then!\"Demands Flash\n\"Hear me out, there's a street race happening not too far from here on\nHollow Street, some of the biggest betters are rumoured to join in on the fun. Whaddya say I enter, win the damn thing and you'll have more than enough money to buy yourself the best looking katanas on the market?\" You say confidentally.\n\"Well if you're so confident, go for it, but if you don't win. Boy you won't wanna know the consequences!\"Flash said with an evil look in his eyes.\nAnd with that you were off to Hollow Street.");
 
       choiceButtons[1].setText("Arrive at Hollow Street");
       choiceButtons[2].setVisible(false);
@@ -373,6 +373,118 @@ public class Main implements Runnable, ActionListener{
       choiceButtons[1].setText("Start Heist");
     }
 
+    public void hollowStreet(){
+      marker = "hollow";
+
+      storyText.setText("You reach Hollow Street right as the other racers are arriving. You also\nsee some big names on the scene. Everybody begins to place their bets. And without further ado, the race begins! You start somewhere in the\nmiddle of the pack out of 16 racers. First big corner is coming up, do you\ndangerously take the inside, play it carefully and take the outside, or do\nyou play it slow and stay back and let the other drivers in front?");
+
+      choiceButtons[2].setVisible(true);
+      choiceButtons[3].setVisible(true);
+
+      choiceButtons[1].setText("Take the inside");
+      choiceButtons[2].setText("Take the outside");
+      choiceButtons[3].setText("Stay back");
+    }
+
+    public void takeInside(){
+      marker = "take inside";
+
+      storyText.setText("You decide to be risky and take the inside. Before you know it another car rams into your left side, your car flips over and is near completely\nunusable. You have lost the race and your hopes for joining\nFlash's team.");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+
+      choiceButtons[1].setText("Restart");
+    }
+
+    public void takeOutside(){
+      marker = "take outside";
+
+      storyText.setText("You play it carefully and take the outside. Smart move, you manage to\navoid the chaos and you continue the race. Fourteen racers remain,\n2 racers crashed and you are in 6th place.");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+
+      choiceButtons[1].setText("Continue the race");
+    }
+
+    public void stayBack(){
+      marker = "stay back";
+
+      storyText.setText("You decide to stay back just a little bit and let the other racers infront.\nClever choice, if you had tried to get infront you would have ended up\nlike one of the 2 racers that just crashed. Fourteen racers remain and\nyou are in 6th place.");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+
+      choiceButtons[1].setText("Continue the race");
+    }
+
+    public void continueRace(){
+      marker = "continue race";
+
+      storyText.setText("The next bit of the race is going fine, you move up to 5th place. The\nending is near and you need to make a big play. You see a ramp in the\ndistance, if you use the ramp you could skip a whole corner and gain a big\nadvantage. Are you willing to take that risk?");
+
+      choiceButtons[2].setVisible(true);
+
+      choiceButtons[1].setText("Don't take the ramp");
+      choiceButtons[2].setText("Take the ramp"); 
+    }
+
+    public void noRamp(){
+      marker = "no ramp";
+
+      storyText.setText("You decided not to take the ramp and just take the corner like everybody else. Well, before you knew it the race was coming to an end and you\nwere only in 4th place.\nBetter luck next time!");
+
+      choiceButtons[2].setVisible(false);
+
+      choiceButtons[1].setText("Restart");
+    }
+
+    public void takeRamp(){
+      marker = "take ramp";
+
+      storyText.setText("You decide to take the ramp and you were successful!\nYou manage to overtake 3 racers and now you're in 2nd place! The final\nstretch of the race is coming up, it's just you and one other racer. You\nare starting to catch up to him when..\n\"What the hell, is that a grenade!?\" You say worriedly.\nBefore you can even finish your train of thought, the racer in front throws the grenade back at you. Think fast, what do you do?");
+
+      choiceButtons[2].setVisible(true);
+      choiceButtons[3].setVisible(true);
+
+      choiceButtons[1].setText("Throw it back at the driver");
+      choiceButtons[2].setText("Drive by it");
+      choiceButtons[3].setText("Throw it up");
+      
+    }
+
+    public void throwBack(){
+      marker = "throw it back";
+
+      storyText.setText("You manage to catch the grenade mid air. Before it explodes you throw it back to the driver that threw it at you. You thought you've won it but as you're about to overtake him, the grenade goes off. Both your car and the racer's car in first place are caught in the explosion. This is the end of\nthe road for you.");
+
+      choiceButtons[1].setText("Restart");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+    }
+    public void driveBy(){
+      marker = "drive by it";
+
+      storyText.setText("You try to drive by the grenade to avoid it but that doesn't really work out and you get caught in the explosion.");
+
+      choiceButtons[1].setText("Restart");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+    }
+    public void throwUp(){
+      marker = "throw it up";
+
+      storyText.setText("You catch the grenade mid air and you immediately throw it up. Perfect\ncalculation as the grenade blows up while it's still in the air. You\nweren't affected at all. The dirty racer in front that tried eliminating you\nlost his way and ended up crashing into a wall. You breeze by him to get to the finish line. First place and the $300,000 is yours. You collect your\nearnings and head back to Little Tokyo. You present Flash Fang with the money, he congratulates you as he goes to buy the latest and\ngreatest katanas. When he comes back he says\n\"Nice job Ripper! Welcome to the team, now let's get this heist under\nway!\" ");
+
+      choiceButtons[1].setText("Start Heist");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+    }
+
   // method called when a button is pressed
   public void actionPerformed(ActionEvent e){
     // get the command from the action
@@ -420,7 +532,7 @@ public class Main implements Runnable, ActionListener{
         break;
     case "street race":
         switch (command){
-          case "choice1": break;
+          case "choice1": hollowStreet(); break;
         }
         break;
     case "follow officer":
@@ -483,6 +595,61 @@ public class Main implements Runnable, ActionListener{
         }
         break;
     case "climb window":
+        switch (command){
+          case "choice1": break;
+        }
+        break;
+    case "hollow":
+        switch (command){
+          case "choice1": takeInside(); break;
+          case "choice2": takeOutside(); break;
+          case "choice3": stayBack(); break;
+        }
+        break;
+    case "take inside":
+        switch (command){
+          case "choice1": streetThug();
+        }
+        break;
+    case "take outside":
+        switch (command){
+          case "choice1": continueRace(); break;
+        }
+        break;
+    case "stay back":
+        switch (command){
+          case "choice1": continueRace(); break;
+        }
+        break;
+    case "continue race":
+        switch (command){
+          case "choice1": noRamp(); break;
+          case "choice2": takeRamp(); break;
+        }
+        break;
+    case "no ramp":
+        switch (command){
+          case "choice1": streetThug(); break;
+        }
+        break;
+    case "take ramp":
+        switch (command){
+          case "choice1": throwBack(); break;
+          case "choice2": driveBy(); break;
+          case "choice3": throwUp(); break;
+        }
+        break;
+    case "throw it back":
+        switch (command){
+          case "choice1": streetThug(); break;
+        }
+        break;
+    case "drive by it":
+        switch (command){
+          case "choice1": streetThug(); break;
+        }
+        break;
+    case "throw it up":
         switch (command){
           case "choice1": break;
         }
