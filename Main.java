@@ -272,16 +272,25 @@ public class Main implements Runnable, ActionListener{
     public void chargeAttack(){
       marker = "charge attack";
 
-      storyText.setText("You charge at the officer, trying to get an early knockout on him,but his reflexes are too quick. Before you can even get remotely close to him he pulls a gun on you.\n\"What the hell do you think you're doing?\" The officer asks.\nThink fast, do you throw a smokescreen or do you pelt him in the head with a rock?");
+      storyText.setText("You charge at the officer, trying to get an early knockout on him,but his\nreflexes are too quick. Before you can even get remotely close to him he pulls a gun on you.\n\"What the hell do you think you're doing?\" The officer asks.\nThink fast, do you throw a smokescreen or do you pelt him in the head\nwith a rock?");
 
       choiceButtons[1].setText("Smokescreen");
       choiceButtons[2].setText("Throw rock");
     }
 
+    public void smokeScreen(){
+      marker = "smokescreen";
+
+      storyText.setText("You quickly throw a smoke screen on the ground.\nThe VCPD officer is starting to panic, he doesn't know where you are.\nThen, like a ninja in the shadows, you come up behind the officer and\nknock him out in one swift blow.");
+
+      choiceButtons[1].setText("Change outfits");
+      choiceButtons[2].setVisible(false);
+    }
+
     public void throwRock(){
       marker = "throw rock";
 
-      storyText.setText(" You have a pretty big looking rock in your right hand behind your back.\nYou quickly hurl it at the officer. His reflexes kick in once again and he manages to safely dodge it.\nWithout a second thought he pulls the trigger");
+      storyText.setText(" You have a pretty big looking rock in your right hand behind your back.\nYou quickly hurl it at the officer. His reflexes kick in once again and he\nmanages to safely dodge it.\nWithout a second thought he pulls the trigger.");
 
       choiceButtons[1].setText("Game Over!");
       choiceButtons[2].setVisible(false);
@@ -290,11 +299,79 @@ public class Main implements Runnable, ActionListener{
     public void gameOver(){
       marker = "game over";
 
-      storyText.setText("Tough luck, guess it just wasn't your day!\nHere, try again");
+      storyText.setText("Tough luck, guess it just wasn't your day!\nHere, try again.");
 
       choiceButtons[1].setText("Restart");
     }
 
+    public void waitPatiently(){
+      marker = "wait";
+
+      storyText.setText("You wait patiently for the officer to get closer then you peek around the\ncorner and give him a sucker punch right in the nose. He's knocked out\non the ground.");
+
+      choiceButtons[1].setText("Change outfits");
+      choiceButtons[2].setVisible(false);
+    }
+
+    public void changeOutfit(){
+      marker = "change outfit";
+
+      storyText.setText("Wasting no time, you change outfits with the officer and now your\ndisguise is perfect. You should have no trouble entering the HQ of the\nVCPD. You enter the inside the HQ and you think of 2 possible options of how you could go about this. 1. You could ask someone for the key to the storage unit and act like you're going to get something. 2. You could try\nto sneak your way into the storage that way you don't have to talk to\nanyone. Which option will you take?");
+
+      choiceButtons[2].setVisible(true);
+
+      choiceButtons[1].setText("Option 1");
+      choiceButtons[2].setText("Option 2");
+    }
+
+    public void optionOne(){
+      marker = "option 1";
+
+      storyText.setText("You look at the name tag of the person at the desk\n\"Hey Mark, can I get the keys to the storage room I think I forgot\nsomething in there.\"You say hoping he wouldn't get too suspicious.\n\"Yeah here, catch!\"Mark says while throwing you the keys.\n\"Thanks man I'll be right back!\"You exclaim as you quickly leave for the\nstorage room.\nYou get to the storage room, unlock the door and find Flash's 3 katanas.\nNow for your escape, do you break the window and climb through, if you do so, the VCPD will remember your face and you will be branded a\ncriminal. Or do you try walking through the front door with the 3 katanas?");
+
+      choiceButtons[2].setVisible(true);
+
+      choiceButtons[1].setText("Climb through window");
+      choiceButtons[2].setText("Go through the front");
+    }
+
+    public void optionTwo(){
+      marker = "option 2";
+
+      storyText.setText("Without looking at anyone, you go to the storage room and start to pick the lock, after a few seconds the door opens. You find the 3 katanas and make your way to the window.");
+
+      choiceButtons[2].setVisible(false);
+
+      choiceButtons[1].setText("Climb through window");
+    }
+
+    public void goFront(){
+      marker = "go through front";
+
+      storyText.setText("You try going through the front, you toss the keys back to Mark and make your way for the door.\nYou're about to make it to the door when you here an officer shout\n\"GET HIM, HE'S GOT FLASH'S KATANAS!!\"\nWithout any chance to get out, you are quickly brought to the ground.\nThis journey's over.");
+
+      choiceButtons[2].setVisible(false);
+
+      choiceButtons[1].setText("Game Over!");
+    }
+
+    public void seriously(){
+      marker = "seriously";
+
+      storyText.setText("You really thought going through the front would work?\nCmon just restart the damn thing.");
+
+      choiceButtons[1].setText("Resart");
+    }
+
+    public void climbWindow(){
+      marker = "climb window";
+
+      storyText.setText("You proceed to use the hilts of the sword to break the window.\nAs you are climbing through the window, another officer enters the room because of the loud noise of the window breaking.\n\"Hey! Get back here!\"The officer shouts.\nBut it was too late as you have already left through the window. You go\nback to Little Tokyo where Flash and his crew are waiting.\n\"Nice job Ripper! Welcome to the team, now let's get this heist under\nway!\"");
+
+      choiceButtons[2].setVisible(false);
+
+      choiceButtons[1].setText("Start Heist");
+    }
 
   // method called when a button is pressed
   public void actionPerformed(ActionEvent e){
@@ -349,13 +426,18 @@ public class Main implements Runnable, ActionListener{
     case "follow officer":
         switch(command){
           case "choice1": chargeAttack(); break;
-          case "choice2":  break;
+          case "choice2": waitPatiently(); break;
         }
         break;
     case "charge attack":
         switch (command){
-          case "choice1": break;
+          case "choice1": smokeScreen(); break;
           case "choice2": throwRock(); break;
+        }
+        break;
+    case "smokescreen":
+        switch (command){
+          case "choice1": changeOutfit(); break;
         }
         break;
     case "throw rock":
@@ -367,6 +449,44 @@ public class Main implements Runnable, ActionListener{
         switch (command){
           case "choice1": streetThug();
         }
+        break;
+    case "wait":
+        switch (command){
+          case "choice1": changeOutfit(); break;
+        }
+        break;
+    case "change outfit": 
+        switch (command){
+          case "choice1": optionOne(); break;
+          case "choice2": optionTwo(); break;
+        }
+        break;
+    case "option 1":
+        switch (command){
+          case "choice1": climbWindow(); break; 
+          case "choice2": goFront(); break;
+        }
+        break;
+    case "option 2":
+        switch (command){
+          case "choice1": climbWindow(); break;
+        }
+        break;
+    case "go through front":
+        switch (command){
+          case "choice1": seriously(); break;
+        }
+        break;
+    case "seriously":
+        switch (command){
+          case "choice1": streetThug();
+        }
+        break;
+    case "climb window":
+        switch (command){
+          case "choice1": break;
+        }
+        break;
    }
   }
   
