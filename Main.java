@@ -16,11 +16,11 @@ public class Main implements Runnable, ActionListener{
   JTextArea storyText;
 
   JButton choiceButtons[];
-  JButton startButton;
+  JButton beginButton;
 
   CardLayout screens;
 
-  String marker;
+  String marker; // marks where you are in the story 
   
 
   // Method to assemble our GUI
@@ -43,13 +43,13 @@ public class Main implements Runnable, ActionListener{
     gameScreen.setLayout(null); 
     
 
-
     // initialize the label 
     roleLabel = new JLabel("A Street Thug's Story");
     
     // set the size and location of the label 
     roleLabel.setBounds(300, 10, 200, 20);
 
+    // change the text colour to red
     roleLabel.setForeground(Color.red);
 
     // add the label to the main panel 
@@ -68,16 +68,11 @@ public class Main implements Runnable, ActionListener{
     // disable the text area so the user can't type inside it 
     storyText.setEnabled(false);
 
-    // change the text color in storyText
+    // change the font settings for storyText
     Font font = new Font ("Times New Roman", Font.PLAIN, 20);
-    storyText.setForeground(Color.red);
     storyText.setFont(font);
-    
 
-    // put text inside the text area 
-    storyText.setText("");
-
-    // change the storyText background 
+    // change the storyText background color
     storyText.setBackground(Color.BLACK);
 
     // add the text area to the gameScreen 
@@ -85,9 +80,9 @@ public class Main implements Runnable, ActionListener{
 
     
     // create an array for the choice buttons 
-    choiceButtons = new JButton[5];
+    choiceButtons = new JButton[4];
 
-    // use a for loop to go through and create each button and set the getActionCommand
+    // use a for loop to go through and create each button
     for(int i = 1; i < choiceButtons.length; i++){
       // initialize the buttons 
       JButton button = new JButton ("" + i);
@@ -98,38 +93,32 @@ public class Main implements Runnable, ActionListener{
     // set the size and location of the buttons 
     choiceButtons[1].setBounds(30, 320, 360, 100);
     choiceButtons[2].setBounds(410, 320, 360, 100);
-    choiceButtons[3].setBounds(30, 440, 360, 100);
-    choiceButtons[4].setBounds(410, 440, 360, 100);
+    choiceButtons[3].setBounds(220, 440, 360, 100);
 
     // add action listener to the buttons 
     choiceButtons[1].addActionListener(this);
     choiceButtons[2].addActionListener(this);
     choiceButtons[3].addActionListener(this);
-    choiceButtons[4].addActionListener(this);
 
     // set setActionCommand to the buttons 
     choiceButtons[1].setActionCommand("choice1");
     choiceButtons[2].setActionCommand("choice2");
     choiceButtons[3].setActionCommand("choice3");
-    choiceButtons[4].setActionCommand("choice4");
 
     // change font size of the buttons 
     choiceButtons[1].setFont (choiceButtons[1].getFont ().deriveFont(20.0f));
     choiceButtons[2].setFont (choiceButtons[2].getFont ().deriveFont(20.0f));
     choiceButtons[3].setFont (choiceButtons[3].getFont ().deriveFont(20.0f));
-    choiceButtons[4].setFont (choiceButtons[4].getFont ().deriveFont(20.0f));
 
-    // make the JButton not visible 
+    // make the JButton non visible 
     choiceButtons[1].setVisible(true);
     choiceButtons[2].setVisible(false);
     choiceButtons[3].setVisible(false);
-    choiceButtons[4].setVisible(false);
 
     // add the choiceButtons to the gameScreen 
     gameScreen.add(choiceButtons[1]);
     gameScreen.add(choiceButtons[2]);
     gameScreen.add(choiceButtons[3]);
-    gameScreen.add(choiceButtons[4]);
     
     // set up the title screen
     titleScreen = new JPanel();
@@ -139,21 +128,25 @@ public class Main implements Runnable, ActionListener{
 
     // create title for the game 
     titleLabel = new JLabel("VALOR CITY 2077", SwingConstants.CENTER);
+    // change font settings for the title
     Font font2 = new Font ("Times New Roman", Font.BOLD, 50);
     titleLabel.setForeground(Color.red);
     titleLabel.setFont(font2);
-    // set setBounds
+    // set setBounds for the titleLabel
     titleLabel.setBounds(100, 30, 600, 300);
     titleScreen.add(titleLabel);
 
-    // create the button to start game 
-    startButton = new JButton("BEGIN");
-    startButton.setBounds(300, 350, 200, 100);
-    startButton.setFont (startButton.getFont ().deriveFont(25.0f));
-    startButton.addActionListener(this);
-    startButton.setActionCommand("begin");
+    // create the button to begin the game 
+    beginButton = new JButton("BEGIN");
+    beginButton.setBounds(300, 350, 200, 100);
+    // change font size
+    beginButton.setFont (beginButton.getFont ().deriveFont(25.0f));
+    beginButton.addActionListener(this);
+    beginButton.setActionCommand("begin");
 
-    titleScreen.add(startButton);
+    // add beginButton to titleScreen
+    titleScreen.add(beginButton);
+
 
     // create the screen jpanel manager 
     screens = new CardLayout();
@@ -165,17 +158,17 @@ public class Main implements Runnable, ActionListener{
     mainPanel.add(titleScreen, "titleScreen");
     mainPanel.add(gameScreen, "gameScreen");
 
+    // add the mainPanel to the frame
     frame.add(mainPanel);
     
     // sets the screen to show by asking the card layout 
     screens.show(mainPanel, "titlescreen");
     
-
   }
   
-    // create methods for different choices 
+    // create methods for different choices (this is the same format for every single method) 
     public void streetThug(){
-      // declare what the marker will be so it can be called in a switch
+      // declare what the marker will be so it can be called in a switch case
       marker = "street thug";
       // set what the storyText will say
       storyText.setText("The year 2077 is a time where crime runs rampant through\nValor City, hence the name, you will need to be courageous in\nthe face of danger in this crime filled metropolis. Street thugs\nhave small dreams of becoming a legend in Valor City, taking\nthe ugly way or not. You are a Street Thug, they call you Ripper.\nYou want to become a legend, what faster way then to\ngain immortality and become a force to be reckoned with!");
@@ -187,9 +180,6 @@ public class Main implements Runnable, ActionListener{
       choiceButtons[1].setVisible(true);
       choiceButtons[2].setVisible(false);
       choiceButtons[3].setVisible(false);
-      choiceButtons[4].setVisible(false);
-
-      
     }
 
     public void continueGame(){
@@ -197,10 +187,10 @@ public class Main implements Runnable, ActionListener{
       
       choiceButtons[2].setVisible(true);
       choiceButtons[3].setVisible(false);
-      choiceButtons[4].setVisible(false);
       
-      storyText.setText("The phone is ringing\nYou pick it up, and to your surprise, no caller ID\nHesitant, you answer\n\"You're Ripper, right?\" Says the man on the other side\n\"Yes... who is this calling\" You say with a hint of concern\n\"That's not important, just come to Little Tokyo if you're about it,\nand come alone\"\n\"Wait you don't mean -\" The mysterious man ended the call before you\ncould finish ");
+      storyText.setText("The phone is ringing\nYou pick it up, and to your surprise, no caller ID.\nHesitant, you answer.\n\"You're Ripper, right?\" Says the man on the other side.\n\"Yes... who is this calling\" You say with a hint of concern.\n\"That's not important, just come to Little Tokyo if you're about it,\nand come alone\"\n\"Wait you don't mean -\" The mysterious man ended the call before you\ncould finish ");
 
+      // this lets there be multiple lines in a button
       choiceButtons[1].setText("<html><center>"+"Go meet him in"+"<br>"+"Little Tokyo alone"+"</center></html>Go meet him in Little Tokyo alone");
       choiceButtons[2].setText("<html><center>"+"Go meet him in"+"<br>"+"Little Tokyo with a group"+"</center></html>");
     }
@@ -208,7 +198,7 @@ public class Main implements Runnable, ActionListener{
     public void meetAlone(){
       marker = "meetAlone";
       
-      storyText.setText("You go to Little Tokyo by yourself. When you get there you cannot believe your eyes. The man standing infront of you is the famous Flash Fang.\nKnown for being incredibly fast and as ferocious as a wolf. He's basically what every one of us lowly thugs want to become.\n\"Flash Fang, i- what an honour to be in your presen-\"\n\"Cut the small talk Ripper, I'm building a team to perform the greatest\nheist Valor City has ever seen. We're gonna steal the chip of immortality and I will then become the king that city has always needed!\" ");
+      storyText.setText("You go to Little Tokyo by yourself. When you get there you cannot believe your eyes. The man standing infront of you is the famous Flash Fang.\nKnown for being incredibly fast and as ferocious as a wolf. He's basically what every one of us lowly thugs want to become.\n\"Flash Fang, i- what an honour to be in your presen-\"\n\"Cut the small talk Ripper, I'm building a team to perform the greatest\nheist Valor City has ever seen. We're gonna steal the chip of immortality and I will then become the king this city has always needed!\" ");
       
       choiceButtons[1].setText("Say no more, I'm in!");
 
@@ -224,7 +214,6 @@ public class Main implements Runnable, ActionListener{
 
       choiceButtons[2].setVisible(false);
       choiceButtons[3].setVisible(false);
-      choiceButtons[4].setVisible(false); 
     }
 
     public void testJoin(){
@@ -251,7 +240,7 @@ public class Main implements Runnable, ActionListener{
     public void streetRace(){
       marker = "street race";
 
-      storyText.setText(" \"You have a better a idea, let's hear it then!\"Demands Flash\n\"Hear me out, there's a street race happening not too far from here on\nHollow Street, some of the biggest betters are rumoured to join in on the fun. Whaddya say I enter, win the damn thing and you'll have more than enough money to buy yourself the best looking katanas on the market?\" You say confidentally.\n\"Well if you're so confident, go for it, but if you don't win. Boy you won't wanna know the consequences!\"Flash said with an evil look in his eyes.\nAnd with that you were off to Hollow Street.");
+      storyText.setText(" \"You have a better a idea, let's hear it then!\"Demands Flash\n\"Hear me out, there's a street race happening not too far from here on\nHollow Street, some of the biggest betters are rumoured to join in on the fun. Whaddya say I enter, win the damn thing and you'll have more than enough money to buy yourself the best looking katanas on the market?\" You say confidentally.\n\"Well if you're so confident, go for it, but if you don't win. Boy you don't wanna know the consequences!\"Flash said with an evil look in his eyes.\nAnd with that you were off to Hollow Street.");
 
       choiceButtons[1].setText("Arrive at Hollow Street");
       choiceButtons[2].setVisible(false);
@@ -338,7 +327,7 @@ public class Main implements Runnable, ActionListener{
     public void optionTwo(){
       marker = "option 2";
 
-      storyText.setText("Without looking at anyone, you go to the storage room and start to pick the lock, after a few seconds the door opens. You find the 3 katanas and make your way to the window.");
+      storyText.setText("Without looking at anyone, you go to the storage room and start to pick\nthe lock, after a few seconds the door opens. You find the 3 katanas\nand make your way to the window.");
 
       choiceButtons[2].setVisible(false);
 
@@ -422,7 +411,7 @@ public class Main implements Runnable, ActionListener{
     public void continueRace(){
       marker = "continue race";
 
-      storyText.setText("The next bit of the race is going fine, you move up to 5th place. The\nending is near and you need to make a big play. You see a ramp in the\ndistance, if you use the ramp you could skip a whole corner and gain a big\nadvantage. Are you willing to take that risk?");
+      storyText.setText("The next bit of the race is going fine, you move up to 5th place. The\nending is near and you need to make a big play. You see a ramp in the\ndistance, if you use the ramp you could skip a whole corner and gain a\nbig advantage. Are you willing to take that risk?");
 
       choiceButtons[2].setVisible(true);
 
@@ -488,7 +477,7 @@ public class Main implements Runnable, ActionListener{
     public void startHeist(){
       marker = "start heist";
 
-      storyText.setText(" \"This is the day that we break into MecaTech and steal the chip of\nimmortality. This is the plan. I have a guy working from the inside, he'll\ncut the cameras as we enter through a vent on the west side of the\nbuilding. We'll split into 2 teams, we and Ripper will go and wait outside\nof the door where the chip is being held and take care of the guards. You two (pointing at the other crewmates) Johnny, you're the hackerman,\nopen the doors guarding the chip, and Zoro you protect him from any\nharm that comes his way. Let's do this!\"");
+      storyText.setText(" \"This is the day that we break into MecaTech and steal the chip of\nimmortality. This is the plan. I have a guy working from the inside, he'll\ncut the cameras as we enter through a vent on the west side of the\nbuilding. We'll split into 2 teams, me and Ripper will go and wait outside\nof the door where the chip is being held and take care of the guards. You two (pointing at the other crewmates) Johnny, you're the hackerman,\nopen the doors guarding the chip, and Zoro you protect him from any\nharm that comes his way. Let's do this!\"");
 
       choiceButtons[1].setText("Roll out");
     }
@@ -546,7 +535,7 @@ public class Main implements Runnable, ActionListener{
     public void doorOpen(){
       marker = "door open";
 
-      storyText.setText("After a few minutes the door opens. And whaddya know, the chip of\nimmortality is sitting right there in front of you. Flash goes forward\nand grabs it, puts it in his pocket and says\n\"Let's move, no time to waste.\"\nAs we were leaving, Flash gets a call from Johnny.\n\"Flash, were in a bit of trouble over here, if you can -- over - here...pleas-\"The call cuts off.\n\"Flash, let's go we gotta help them!\"\n\"No Ripper are you stupid!? If we go over there we'll die, you\nunderstand? Now let's save ourselves and not those bozos!\"\nWhat will you do in this situation?");
+      storyText.setText("After a few minutes the door opens. And whaddya know, the chip of\nimmortality is sitting right there in front of you. Flash goes forward\nand grabs it, puts it in his pocket and says\n\"Let's move, no time to waste.\"\nAs we were leaving, Flash gets a call from Johnny.\n\"Flash, were in a bit of trouble over here, if you can -- over - here...pleas-\"The call cuts off.\n\"Flash, let's go we gotta help them!\" You say worriedly.\n\"No Ripper are you stupid!? If we go over there we'll die, you\nunderstand? Now let's save ourselves and not those bozos!\"\nWhat will you do in this situation?");
 
       choiceButtons[2].setVisible(true);
       choiceButtons[3].setVisible(true);
@@ -559,7 +548,7 @@ public class Main implements Runnable, ActionListener{
     public void opposeOrder(){
       marker = "oppose order";
 
-      storyText.setText("\"No! Flash, we're going to save them!\"\n\"Good. That's one less loose end.\" Flash says as he shoots you in the\nstomach and leaves on his own.");
+      storyText.setText("\"No! Flash, we're going to save them!\" You say.\n\"Fine. That's one less loose end.\" Flash says as he shoots you in the\nstomach and leaves on his own.");
 
       choiceButtons[2].setVisible(false);
       choiceButtons[3].setVisible(false);
@@ -668,7 +657,7 @@ public class Main implements Runnable, ActionListener{
     public void findFlash(){
       marker = "find flash";
 
-      storyText.setText("You, Zoro, and Johnny start to look for Flash, he can't be far as he's on\nfoot as well. Johnny, being the hackerman that he is, starts to track down Flash and in less than a minute, you have acquired Flash's position. A few\nminutes later you catch up to Flash and he is the first to talk\n\"Oh so you guys made it out, isn't that wonderful!\"\n\"Cut the crap Flash, you didn't give a damn about us since the beginning! Now hand over the chip of immortality, someone like you doesn't\ndeserve to be the king of this city! You shout.\n\"Over my dead body..\" Flash responds as he fires his pistol from the hip.\nThis shot is heading towards Zoro. What happens next?");
+      storyText.setText("You, Zoro, and Johnny start to look for Flash, he can't be far as he's on\nfoot as well. Johnny, being the hackerman that he is, starts to track down Flash and in less than a minute, you have acquired Flash's position. A few\nminutes later you catch up to Flash and he is the first to talk\n\"Oh so you guys made it out, isn't that wonderful!\"\n\"Cut the crap Flash, you didn't give a damn about us since the\nbeginning! Now hand over the chip of immortality, someone like\nyou doesn't deserve to be the king of this city! You shout.\n\"Over my dead body..\" Flash responds as he fires his pistol from the hip.\nThis shot is heading towards Zoro. What happens next?");
 
       choiceButtons[2].setVisible(true);
 
@@ -679,7 +668,7 @@ public class Main implements Runnable, ActionListener{
     public void jumpInfront(){
       marker = "jump infront";
 
-      storyText.setText("You jump infront of Zoro, taking a bullet right to the chest. Zoro goes to your aid but it's no use. You tell him\n\"Live on, do it for me...\"\nYou pass away but your wish was fulfilled. Zoro avenged you and become the king of Valor City, in the name of a simple street thug who turned out to be quite the comrade, Ripper.");
+      storyText.setText("You jump infront of Zoro, taking a bullet right to the chest. Zoro goes to\nyour aid but it's no use. You tell him\n\"Live on, do it for me...\"\nYou pass away but your wish was fulfilled. Zoro avenged you and became the king of Valor City, in the name of a simple street thug who turned\nout to be quite the comrade, Ripper.");
 
       choiceButtons[2].setVisible(false);
 
@@ -689,7 +678,7 @@ public class Main implements Runnable, ActionListener{
     public void pushAway(){
       marker = "push him away";
 
-      storyText.setText("You push Zoro out of the way, but you get shot in the left shoulder. You continue to walk towards Flash, before he can fire again, Johnny shoots Flash's left hand, forcing him to drop the pistol.\n\"No please, spare me Ripper, I'll do whatever you want just spare me please!\"\nFinal decision is up to you.");
+      storyText.setText("You push Zoro out of the way, but you get shot in the left shoulder. You\ncontinue to limp towards Flash, before he can fire again, Johnny shoots\nFlash's left hand, forcing him to drop the pistol.\n\"No please, spare me Ripper, I'll do whatever you want just spare\nme please!\"\nFinal decision is up to you.");
 
       choiceButtons[2].setVisible(true);
 
@@ -700,7 +689,7 @@ public class Main implements Runnable, ActionListener{
     public void spareHim(){
       marker = "spare him";
 
-      storyText.setText("\"Okay I'll spare you, but don't try to pull any funn-\"Before you could finish Flash sweep kicks you.\n\"Naive fools, all of you!\" Flash shouts as he takes down you, Zoro, and Johnny.\nFlash walks away from the scene and soon after becomes the king of Valor City.");
+      storyText.setText("\"Okay I'll spare you, but don't try to pull any funn-\"Before you could\nfinish Flash sweep kicks you.\n\"Naive fools, all of you!\" Flash shouts as he reveals a secret weapon that he has behind his back that he use to take down you, Zoro, and Johnny.\nFlash walks away from the scene and soon after becomes the king of\nValor City.");
 
       choiceButtons[2].setVisible(false);
 
@@ -710,7 +699,7 @@ public class Main implements Runnable, ActionListener{
     public void finishHim(){
       marker = "finish him";
 
-      storyText.setText("\"This is the end of the road for you you worhtless scum!\"You shout as you finish him off.\nYou take the chip of immortality from Flash and you insert it into yourself. With this, you become the king of Valor City, with your two great comrades Zoro and Johnny right beside you!");
+      storyText.setText("\"This is the end of the road for you you worhtless scum!\"You shout as you finish him off.\nYou take the chip of immortality from Flash and you insert it into\nyourself. With this, you become the king of Valor City, with your two\ngreat comrades Zoro and Johnny right beside you!");
 
       choiceButtons[2].setVisible(false);
 
@@ -718,7 +707,11 @@ public class Main implements Runnable, ActionListener{
     }
 
     public void theEnd(){
+      marker = "the end";
 
+      storyText.setText("Congratulations! You have reached the end of the story!\nThank you for playing and I thank the upcoming greatest game of all\ntime Cyberpunk 2077 for the inspiration!");
+
+      choiceButtons[1].setText("Play again");
     }
 
   // method called when a button is pressed
@@ -726,23 +719,26 @@ public class Main implements Runnable, ActionListener{
     // get the command from the action
     String command = e.getActionCommand();
 
+    // if begin button is pressed
     if (command.equals("begin")){
       // switch the screen to gameScreen
       screens.show(mainPanel, "gameScreen");
+      // start out on the streetThug method
       streetThug();
     }
     
-    
+    // this is a switch case for the marker, based on where the user is in the story another switch case will occur
     switch (marker){
     case "street thug":
+        // switch case for what choice button the user presses, based on the button, another method will be called (this is the same for every single switch case for the command)
         switch(command){
-        case "choice1": continueGame(); break;
+          case "choice1": continueGame(); break;
         }
-        break;
+        break; // break is here so the program doesn't read past this break
     case "continue":
         switch (command){
-        case "choice1": meetAlone(); break;
-        case "choice2": meetGroup(); break;
+          case "choice1": meetAlone(); break;
+          case "choice2": meetGroup(); break;
         }
         break;
     case "meetAlone":
@@ -990,13 +986,29 @@ public class Main implements Runnable, ActionListener{
         break;
     case "jump infront":
         switch (command){
-          case "choice1": break;
+          case "choice1": theEnd(); break;
         }
         break;
-    case "push away":
+    case "push him away":
         switch (command){
           case "choice1": spareHim(); break;
           case "choice2": finishHim(); break;
+        }
+        break;
+    case "spare him":
+        switch (command){
+          case "choice1": theEnd(); break;
+        }
+        break;
+    case "finish him":
+        switch (command){
+          case "choice1": theEnd(); break;
+        }
+        break;
+    case "the end":
+        switch (command){
+          // if the user chooses to play again, send them to the title screen
+          case "choice1": screens.show(mainPanel, "titleScreen"); break;
         }
         break;
    }
