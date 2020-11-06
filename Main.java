@@ -624,8 +624,100 @@ public class Main implements Runnable, ActionListener{
     public void saveOthers(){
       marker = "save others";
 
-      storyText.setText("You run away from Flash before he could notice and you shout back\n\"Screw you Flash, you selfish bastard!\"\nA bullet whistles by your left ear\n\"We will meet again, Flash Fang!\" You yell as you go to save Johnny and Zoro. You reach the control room where the others are. They are in trouble for sure, they are hiding behind a desk with 5 soldiers shooting at them. You kick down the door and start spraying. You tell Johnny and Zoro about the situation ");
+      storyText.setText("You run away from Flash before he could notice and you shout back\n\"Screw you Flash, you selfish bastard!\"\nA bullet whistles by your left ear.\n\"We will meet again, Flash Fang!\" You yell as you go to save Johnny and Zoro.\nYou reach the control room where the others are. They are in trouble for\nsure, they are hiding behind a desk with 5 soldiers shooting at them.\nYou kick down the door and start spraying. You tell Johnny and Zoro\nabout the situation and tell them that we have to escape now.");
 
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+
+      choiceButtons[1].setText("Escape");
+    }
+
+    public void escape(){
+      marker = "escape";
+
+      storyText.setText("You, Zoro, and Johnny are making your way through the building. The\nexit is within reach. As soon as you were about to reach the exit, a group\nof soldiers appear.\nWhat do you do?");
+
+      choiceButtons[2].setVisible(true);
+
+      choiceButtons[1].setText("Avoid combat");
+      choiceButtons[2].setText("Fight your way through");
+    }
+
+    public void avoidCombat(){
+      marker = "avoid combat";
+
+      storyText.setText("You and the others decide to avoid getting into a fight so you all start\nsprinting away from the scene. That wasn't such a bright idea as you all\nget brought down and arrested. Game over!");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+
+      choiceButtons[1].setText("Restart");
+    }
+
+    public void fightBack(){
+      marker = "fight back";
+
+      storyText.setText("You all have the same idea, in unison the three of you start to lower your weapons to the ground, but as soon as you're about the drop them,\nyou spring right back up and defeat all the soldiers in the room.\nThe three of you safely escape the building and now start to look\nfor Flash.");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+
+      choiceButtons[1].setText("Find Flash Fang");      
+    }
+
+    public void findFlash(){
+      marker = "find flash";
+
+      storyText.setText("You, Zoro, and Johnny start to look for Flash, he can't be far as he's on\nfoot as well. Johnny, being the hackerman that he is, starts to track down Flash and in less than a minute, you have acquired Flash's position. A few\nminutes later you catch up to Flash and he is the first to talk\n\"Oh so you guys made it out, isn't that wonderful!\"\n\"Cut the crap Flash, you didn't give a damn about us since the beginning! Now hand over the chip of immortality, someone like you doesn't\ndeserve to be the king of this city! You shout.\n\"Over my dead body..\" Flash responds as he fires his pistol from the hip.\nThis shot is heading towards Zoro. What happens next?");
+
+      choiceButtons[2].setVisible(true);
+
+      choiceButtons[1].setText("Jump infront of Zoro");
+      choiceButtons[2].setText("Push Zoro out of the way");
+    }
+
+    public void jumpInfront(){
+      marker = "jump infront";
+
+      storyText.setText("You jump infront of Zoro, taking a bullet right to the chest. Zoro goes to your aid but it's no use. You tell him\n\"Live on, do it for me...\"\nYou pass away but your wish was fulfilled. Zoro avenged you and become the king of Valor City, in the name of a simple street thug who turned out to be quite the comrade, Ripper.");
+
+      choiceButtons[2].setVisible(false);
+
+      choiceButtons[1].setText("The End");
+    }
+
+    public void pushAway(){
+      marker = "push him away";
+
+      storyText.setText("You push Zoro out of the way, but you get shot in the left shoulder. You continue to walk towards Flash, before he can fire again, Johnny shoots Flash's left hand, forcing him to drop the pistol.\n\"No please, spare me Ripper, I'll do whatever you want just spare me please!\"\nFinal decision is up to you.");
+
+      choiceButtons[2].setVisible(true);
+
+      choiceButtons[1].setText("Spare him");
+      choiceButtons[2].setText("Finish him!");
+    }
+
+    public void spareHim(){
+      marker = "spare him";
+
+      storyText.setText("\"Okay I'll spare you, but don't try to pull any funn-\"Before you could finish Flash sweep kicks you.\n\"Naive fools, all of you!\" Flash shouts as he takes down you, Zoro, and Johnny.\nFlash walks away from the scene and soon after becomes the king of Valor City.");
+
+      choiceButtons[2].setVisible(false);
+
+      choiceButtons[1].setText("The End");
+    }
+
+    public void finishHim(){
+      marker = "finish him";
+
+      storyText.setText("\"This is the end of the road for you you worhtless scum!\"You shout as you finish him off.\nYou take the chip of immortality from Flash and you insert it into yourself. With this, you become the king of Valor City, with your two great comrades Zoro and Johnny right beside you!");
+
+      choiceButtons[2].setVisible(false);
+
+      choiceButtons[1].setText("The End");
+    }
+
+    public void theEnd(){
 
     }
 
@@ -834,7 +926,7 @@ public class Main implements Runnable, ActionListener{
         switch (command){
           case "choice1": opposeOrder(); break;
           case "choice2": goWithFlash(); break;
-          case "choice3": break;
+          case "choice3": saveOthers(); break;
         }
         break;
     case "oppose order":
@@ -867,6 +959,44 @@ public class Main implements Runnable, ActionListener{
     case "ground":
         switch (command){
           case "choice1": streetThug(); break;
+        }
+        break;
+    case "save others":
+        switch (command){
+          case "choice1": escape(); break;
+        }
+        break;
+    case "escape":
+        switch (command){
+          case "choice1": avoidCombat(); break;
+          case "choice2": fightBack(); break;
+        }
+        break;
+    case "avoid combat":
+        switch (command){
+          case "choice1": streetThug(); break;
+        }
+        break;
+    case "fight back":
+        switch (command){
+          case "choice1": findFlash(); break;
+        }
+        break;
+    case "find flash":
+        switch (command){
+          case "choice1": jumpInfront(); break;
+          case "choice2": pushAway(); break;
+        }
+        break;
+    case "jump infront":
+        switch (command){
+          case "choice1": break;
+        }
+        break;
+    case "push away":
+        switch (command){
+          case "choice1": spareHim(); break;
+          case "choice2": finishHim(); break;
         }
         break;
    }
