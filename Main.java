@@ -327,7 +327,7 @@ public class Main implements Runnable, ActionListener{
     public void optionOne(){
       marker = "option 1";
 
-      storyText.setText("You look at the name tag of the person at the desk\n\"Hey Mark, can I get the keys to the storage room I think I forgot\nsomething in there.\"You say hoping he wouldn't get too suspicious.\n\"Yeah here, catch!\"Mark says while throwing you the keys.\n\"Thanks man I'll be right back!\"You exclaim as you quickly leave for the\nstorage room.\nYou get to the storage room, unlock the door and find Flash's 3 katanas.\nNow for your escape, do you break the window and climb through, if you do so, the VCPD will remember your face and you will be branded a\ncriminal. Or do you try walking through the front door with the 3 katanas?");
+      storyText.setText("You look at the name tag of the person at the desk\n\"Hey Mark, can I get the keys to the storage room I think I forgot\nsomething in there.\"You say hoping he wouldn't get too suspicious.\n\"Yeah here, catch!\"Mark says while throwing you the keys.\n\"Thanks man I'll be right back!\"You exclaim as you quickly leave for the\nstorage room.\nYou get to the storage room, unlock the door and find Flash's 3 katanas.\nNow for your escape, do you break the window and climb through, if you do so, the VCPD will remember your face and you will be branded a\ncriminal.Or do you try walking through the front door with the 3 katanas?");
 
       choiceButtons[2].setVisible(true);
 
@@ -505,9 +505,9 @@ public class Main implements Runnable, ActionListener{
     }
 
     public void jumpDown(){
-      marker = " jump down";
+      marker = "jump down";
 
-      storyText.setText("As soon as you and Flash jump down, the guards spot you and immediately call emergency. You and Flash quickly take them out. Now, what will you do about this emergency call?");
+      storyText.setText("As soon as you and Flash jump down, the guards spot you and\nimmediately call emergency. You and Flash quickly take them out.\nNow, what will you do about this emergency call?");
 
       choiceButtons[1].setText("Stand and wait");
       choiceButtons[2].setText("Say it was a false alarm");
@@ -516,7 +516,7 @@ public class Main implements Runnable, ActionListener{
     public void standWait(){
       marker = "stand and wait";
 
-      storyText.setText("You and Flash decide to do nothing about this emergency call. Not such a good idea as a few minutes later, the room is swarmed with MecaTech soldiers. That's the end of the story for you.");
+      storyText.setText("You and Flash decide to do nothing about this emergency call. Not such a good idea as a few minutes later, the room is swarmed with MecaTech\nsoldiers. That's the end of the story for you.");
 
       choiceButtons[2].setVisible(false);
 
@@ -526,7 +526,7 @@ public class Main implements Runnable, ActionListener{
     public void falseAlarm(){
       marker = "false alarm";
 
-      storyText.setText("You grab the walkie talkie from the guard that you just knocked out.\n\"Sorry boss, that was a false alarm, can you order all soldiers to stand down. I repeat this was a false alarm\"\n\"Cmon man, don't go scaring me like that, I'll deal with you later just get back to work!\"\nAfter what could have been an unfortunate turn of events, you and Flash wait for Johnny and Zoro to open the door.");
+      storyText.setText("You grab the walkie talkie from the guard that you just knocked out.\n\"Sorry boss, that was a false alarm, can you order all soldiers to stand\ndown. I repeat this was a false alarm\"\n\"Cmon man, don't go scaring me like that, I'll deal with you later just get back to work!\"\nAfter what could have been an unfortunate turn of events, you and Flash wait for Johnny and Zoro to open the door.");
 
       choiceButtons[2].setVisible(false);
 
@@ -534,7 +534,99 @@ public class Main implements Runnable, ActionListener{
     }
 
     public void fromAbove(){
+      marker = "from above";
+
+      storyText.setText("You and Flash coordinate an aerial attack that knocks out both guards\nprotecting the door. Now the two of you wait for Johnny and Zoro\nto finish opening the door.");
       
+      choiceButtons[2].setVisible(false);
+
+      choiceButtons[1].setText("Wait for the door");
+    }
+
+    public void doorOpen(){
+      marker = "door open";
+
+      storyText.setText("After a few minutes the door opens. And whaddya know, the chip of\nimmortality is sitting right there in front of you. Flash goes forward\nand grabs it, puts it in his pocket and says\n\"Let's move, no time to waste.\"\nAs we were leaving, Flash gets a call from Johnny.\n\"Flash, were in a bit of trouble over here, if you can -- over - here...pleas-\"The call cuts off.\n\"Flash, let's go we gotta help them!\"\n\"No Ripper are you stupid!? If we go over there we'll die, you\nunderstand? Now let's save ourselves and not those bozos!\"\nWhat will you do in this situation?");
+
+      choiceButtons[2].setVisible(true);
+      choiceButtons[3].setVisible(true);
+
+      choiceButtons[1].setText("Oppose Flash's orders");
+      choiceButtons[2].setText("Go with Flash");
+      choiceButtons[3].setText("Go save the others");
+    }
+
+    public void opposeOrder(){
+      marker = "oppose order";
+
+      storyText.setText("\"No! Flash, we're going to save them!\"\n\"Good. That's one less loose end.\" Flash says as he shoots you in the\nstomach and leaves on his own.");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+
+      choiceButtons[1].setText("Game over!");
+    }
+
+    public void shepard(){
+      marker = "shepard";
+
+      storyText.setText("That kind of reminds you of Shepard from Modern Warfare 2 doesn't it?\nAnyways, try again.");
+
+      choiceButtons[1].setText("Restart");
+    }
+
+    public void goWithFlash(){
+      marker = "go with flash";
+
+      storyText.setText("You decide to go with Flash. You two are about to make it to the exit\nwhen you are stopped by mulitple soldiers.\n\"On the ground! NOW!\" One soldier yells.\nWhat do you do?");
+
+      choiceButtons[2].setVisible(true);
+      choiceButtons[3].setVisible(true);
+
+      choiceButtons[1].setText("Charge at the soldiers");
+      choiceButtons[2].setText("Run the opposite way");
+      choiceButtons[3].setText("Get on the ground");
+    }
+
+    public void chargeSoldier(){
+      marker = "charge at soldier";
+
+      storyText.setText("\"Ripper, you charge at them and I'll hit them with a sneak attack.\"\nWhispers Flash.\nWithout hesitation, you charge at the soldiers. You look back, Flash is\ngone, he took the chance to escape while all this commotion was going\non. Now your stuck rushing at the soldiers with no back up.\nThey mow you down. Game over!");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+
+      choiceButtons[1].setText("Restart");
+    }
+
+    public void runAway(){
+      marker = "run away";
+
+      storyText.setText("You try running in the opposite direction of the soldiers. You are instantly shot. Game over!");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+
+      choiceButtons[1].setText("Restart");      
+    }
+
+    public void onTheGround(){
+      marker = "ground";
+
+      storyText.setText("You and Flash do as they say and get on the ground. You are both\narrested and sent to prison. Game over!");
+
+      choiceButtons[2].setVisible(false);
+      choiceButtons[3].setVisible(false);
+
+      choiceButtons[1].setText("Restart");
+    }
+
+    public void saveOthers(){
+      marker = "save others";
+
+      storyText.setText("You run away from Flash before he could notice and you shout back\n\"Screw you Flash, you selfish bastard!\"\nA bullet whistles by your left ear\n\"We will meet again, Flash Fang!\" You yell as you go to save Johnny and Zoro. You reach the control room where the others are. They are in trouble for sure, they are hiding behind a desk with 5 soldiers shooting at them. You kick down the door and start spraying. You tell Johnny and Zoro about the situation ");
+
+
     }
 
   // method called when a button is pressed
@@ -710,11 +802,73 @@ public class Main implements Runnable, ActionListener{
         switch (command){
           case "choice1": rollOut(); break;
         }
+        break;
     case "roll out":
         switch (command){
-          case "choice1": break;
-          case "choice2": break;
+          case "choice1": jumpDown(); break;
+          case "choice2": fromAbove(); break;
         }
+        break;
+    case "jump down":
+        switch (command){
+          case "choice1": standWait(); break;
+          case "choice2": falseAlarm(); break;
+        }
+        break;
+    case "stand and wait":
+        switch (command){
+          case "choice1": streetThug(); break;
+        }
+        break;
+    case "false alarm":
+        switch (command){
+          case "choice1": doorOpen(); break;
+        }
+        break;
+    case "from above":
+        switch (command){
+          case "choice1": doorOpen(); break;
+        }
+        break;
+    case "door open":
+        switch (command){
+          case "choice1": opposeOrder(); break;
+          case "choice2": goWithFlash(); break;
+          case "choice3": break;
+        }
+        break;
+    case "oppose order":
+        switch (command){
+          case "choice1": shepard(); break;
+        }
+        break;
+    case "shepard":
+        switch (command){
+          case "choice1": streetThug(); break;
+        }
+        break;
+    case "go with flash":
+        switch (command){
+          case "choice1": chargeSoldier(); break;
+          case "choice2": runAway(); break;
+          case "choice3": onTheGround(); break;
+        }
+        break;
+    case "charge at soldier":
+        switch (command){
+          case "choice1": streetThug(); break;
+        }
+        break;
+    case "run away":
+        switch (command){
+          case "choice1": streetThug(); break;
+        }
+        break;
+    case "ground":
+        switch (command){
+          case "choice1": streetThug(); break;
+        }
+        break;
    }
   }
   
