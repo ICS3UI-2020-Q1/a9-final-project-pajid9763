@@ -485,6 +485,58 @@ public class Main implements Runnable, ActionListener{
       choiceButtons[3].setVisible(false);
     }
 
+    public void startHeist(){
+      marker = "start heist";
+
+      storyText.setText(" \"This is the day that we break into MecaTech and steal the chip of\nimmortality. This is the plan. I have a guy working from the inside, he'll\ncut the cameras as we enter through a vent on the west side of the\nbuilding. We'll split into 2 teams, we and Ripper will go and wait outside\nof the door where the chip is being held and take care of the guards. You two (pointing at the other crewmates) Johnny, you're the hackerman,\nopen the doors guarding the chip, and Zoro you protect him from any\nharm that comes his way. Let's do this!\"");
+
+      choiceButtons[1].setText("Roll out");
+    }
+
+    public void rollOut(){
+      marker = "roll out";
+
+      storyText.setText("The crew arrives at the MecaTech building. You start to make your way to the west side of the building avoiding guards as you go. Flash pulls out\nhis phone and sends a message to the guy he has working for him on the inside. The cameras cut and we started going in through the vents.\nJohnny and Zoro went for the control room to open the door and you and\nFlash go to the room guarding the chip. As you are about to enter the\nroom, you spot two guards. How do you go about this?");
+
+      choiceButtons[2].setVisible(true);
+
+      choiceButtons[1].setText("Jump down and fight");
+      choiceButtons[2].setText("Take them out from above");
+    }
+
+    public void jumpDown(){
+      marker = " jump down";
+
+      storyText.setText("As soon as you and Flash jump down, the guards spot you and immediately call emergency. You and Flash quickly take them out. Now, what will you do about this emergency call?");
+
+      choiceButtons[1].setText("Stand and wait");
+      choiceButtons[2].setText("Say it was a false alarm");
+    }
+
+    public void standWait(){
+      marker = "stand and wait";
+
+      storyText.setText("You and Flash decide to do nothing about this emergency call. Not such a good idea as a few minutes later, the room is swarmed with MecaTech soldiers. That's the end of the story for you.");
+
+      choiceButtons[2].setVisible(false);
+
+      choiceButtons[1].setText("Restart");
+    }
+
+    public void falseAlarm(){
+      marker = "false alarm";
+
+      storyText.setText("You grab the walkie talkie from the guard that you just knocked out.\n\"Sorry boss, that was a false alarm, can you order all soldiers to stand down. I repeat this was a false alarm\"\n\"Cmon man, don't go scaring me like that, I'll deal with you later just get back to work!\"\nAfter what could have been an unfortunate turn of events, you and Flash wait for Johnny and Zoro to open the door.");
+
+      choiceButtons[2].setVisible(false);
+
+      choiceButtons[1].setText("Wait for the door");
+    }
+
+    public void fromAbove(){
+      
+    }
+
   // method called when a button is pressed
   public void actionPerformed(ActionEvent e){
     // get the command from the action
@@ -596,7 +648,7 @@ public class Main implements Runnable, ActionListener{
         break;
     case "climb window":
         switch (command){
-          case "choice1": break;
+          case "choice1": startHeist(); break;
         }
         break;
     case "hollow":
@@ -651,9 +703,18 @@ public class Main implements Runnable, ActionListener{
         break;
     case "throw it up":
         switch (command){
-          case "choice1": break;
+          case "choice1": startHeist(); break;
         }
         break;
+    case "start heist":
+        switch (command){
+          case "choice1": rollOut(); break;
+        }
+    case "roll out":
+        switch (command){
+          case "choice1": break;
+          case "choice2": break;
+        }
    }
   }
   
